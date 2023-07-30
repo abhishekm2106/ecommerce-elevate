@@ -1,0 +1,34 @@
+.card {
+    padding: 1rem 2rem;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.301);
+    width: 31%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    .price {
+        margin-bottom: 2rem;
+
+        .price-text {
+            color: orangered;
+        }
+    }
+
+    .image-div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 60%;
+
+        }
+    }
+
+
+}
