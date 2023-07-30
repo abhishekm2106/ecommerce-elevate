@@ -10,19 +10,22 @@ function App() {
   const [products, setProducts] = useState([])
   const [search, setSearch] = useState('')
 
-  useEffect(() => {
-    if (category === "allcategory")
-      axios.get('https://fakestoreapi.com/products').then(response => setProducts(response.data))
-    else
-      axios.get('https://fakestoreapi.com/products/category/' + category).then(response => setProducts(response.data))
-  }, [category])
-  useEffect(() => {
+  const filterSearch = () => {
+    if (search === "") return;
     const newProductList = products.filter(p => {
-      return p.title.includes(search) || p.description.includes(search) || p.description.includes(search)
+      return p.title.toLowerCase().includes(search) || p.description.toLowerCase().includes(search) || p.description.toLowerCase().includes(search)
     })
     setProducts(newProductList)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search])
+  }
+
+  useEffect(() => {
+    const endpoint = category === "allcategory" ? 'https://fakestoreapi.com/products' : 'https://fakestoreapi.com/products/category/' + category
+    axios
+      .get(endpoint)
+      .then(response => setProducts(response.data))
+      .then(() => filterSearch())
+  }, [category, search])
+
 
   return (
     <div className="App">
@@ -37,7 +40,9 @@ function App() {
         <h2>Men's & Women's fashion</h2>
         <div className='products-list'>
           {
-            products.length ? products.map(product => <Product {...product} key={product.id} />) : <p className='f-width'>OOPs nothing found</p>
+            products.length ?
+              products.map(product => <Product {...product} key={product.id} />) :
+              <p className='f-width'>OOPs nothing found!!!</p>
           }
         </div>
       </section>

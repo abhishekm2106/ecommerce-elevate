@@ -30,7 +30,7 @@ const Navbar = ({ category, setCategory, search, setSearch }) => {
                     }
                 </select>
                 <div className='search'>
-                    <input type="text" placeholder='Search for shirts?' value={search} onChange={(e) => setSearch(e.target.value)} />
+                    <input type="text" placeholder='Search for shirts?' value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
                     <button><FaSearch /></button>
                 </div>
                 <button className='tp-button'><FaShoppingCart /> Cart</button>
