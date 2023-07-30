@@ -37,10 +37,13 @@ function App() {
         <h2>Men's & Women's fashion</h2>
         <div className='products-list'>
           {
-            products.map(product => <Product {...product} key={product.id} />)
+            products.length ? products.map(product => <Product {...product} key={product.id} />) : <p className='f-width'>OOPs nothing found</p>
           }
         </div>
       </section>
+
+      <p className='credit'>Made with ❤️ by <a href="https://www.linkedin.com/in/abhishekm2106/">Abhishek Mohanty</a></p>
+
     </div>
   );
 }
