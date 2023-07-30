@@ -43,6 +43,9 @@ input {
         padding: 0 .5rem;
     }
 
+    @media screen and (max-width: 510px) {
+        padding: 0;
+    }
 
     .slider {
         display: flex;
