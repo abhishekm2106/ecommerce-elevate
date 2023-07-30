@@ -3,14 +3,22 @@
         color: #CFCFCF;
         text-transform: capitalize;
         width: 100%;
-        left: 50%;
         display: flex;
         justify-content: center;
         padding: .2rem 8rem 1.4rem;
         clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+        text-align: center;
 
         @media screen and (max-width: 900px) {
-            padding: .2rem 1rem 1.4rem;
+            padding: .8rem 1rem 1.4rem;
+        }
+
+        @media screen and (max-width: 700px) {
+            clip-path: none;
+        }
+
+        @media screen and (max-width: 510px) {
+            font-size: .6rem;
         }
 
         span {
@@ -30,7 +38,7 @@
         align-items: center;
         width: 100%;
         position: sticky;
-        top: 2px;
+        top: 4px;
         z-index: 10;
 
 
@@ -55,7 +63,7 @@
             font-size: 1rem;
 
             @media screen and (max-width: 510px) {
-                padding: .4rem .1rem;
+                padding: .4rem 0;
 
             }
         }

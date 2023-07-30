@@ -13,6 +13,10 @@
         width: 47%;
     }
 
+    @media screen and (max-width: 510px) {
+        width: 100%;
+    }
+
     .price {
         margin-bottom: 2rem;
 
