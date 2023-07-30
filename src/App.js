@@ -9,6 +9,7 @@ function App() {
   const [category, setCategory] = useState('allcategory')
   const [products, setProducts] = useState([])
   const [search, setSearch] = useState('')
+
   useEffect(() => {
     if (category === "allcategory")
       axios.get('https://fakestoreapi.com/products').then(response => setProducts(response.data))
@@ -22,6 +23,7 @@ function App() {
     setProducts(newProductList)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
+
   return (
     <div className="App">
       <section className='interactive'>
