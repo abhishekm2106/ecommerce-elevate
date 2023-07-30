@@ -20,6 +20,7 @@ function App() {
       return p.title.includes(search) || p.description.includes(search) || p.description.includes(search)
     })
     setProducts(newProductList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
   return (
     <div className="App">
