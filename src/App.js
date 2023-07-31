@@ -18,7 +18,6 @@ function App() {
       p.description.toLowerCase().includes(search) ||
       p.description.toLowerCase().includes(search)
     )
-    console.log(newProductList, productTemp)
     return newProductList;
 
   }
