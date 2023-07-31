@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.scss';
 import Navbar from './components/navbar/navbar';
 import Product from './components/product/product';
@@ -9,23 +9,32 @@ function App() {
   const [category, setCategory] = useState('allcategory')
   const [products, setProducts] = useState([])
   const [search, setSearch] = useState('')
+  let productTemp = useRef([]);
 
   const filterSearch = () => {
-    if (search === "") return;
-    const newProductList = products.filter(p => {
-      return p.title.toLowerCase().includes(search) || p.description.toLowerCase().includes(search) || p.description.toLowerCase().includes(search)
-    })
-    setProducts(newProductList)
+    if (search === "") return productTemp.current;
+    const newProductList = productTemp.current.filter(p =>
+      p.title.toLowerCase().includes(search) ||
+      p.description.toLowerCase().includes(search) ||
+      p.description.toLowerCase().includes(search)
+    )
+    console.log(newProductList, productTemp)
+    return newProductList;
+
   }
 
   useEffect(() => {
     const endpoint = category === "allcategory" ? 'https://fakestoreapi.com/products' : 'https://fakestoreapi.com/products/category/' + category
     axios
       .get(endpoint)
-      .then(response => setProducts(response.data))
-      .then(() => filterSearch())
-  }, [category, search])
+      .then(response => { productTemp.current = response.data; setProducts(response.data); })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category])
 
+  useEffect(() => {
+    setProducts(filterSearch())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search])
 
   return (
     <div className="App">
