@@ -27,7 +27,6 @@ function App() {
     axios
       .get(endpoint)
       .then(response => { productTemp.current = response.data; setProducts(response.data); })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category])
 
   useEffect(() => {
